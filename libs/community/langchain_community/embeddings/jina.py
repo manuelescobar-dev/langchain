@@ -6,7 +6,7 @@ from urllib.parse import urlparse
 import requests
 from langchain_core.embeddings import Embeddings
 from langchain_core.utils import convert_to_secret_str, get_from_dict_or_env
-from pydantic import BaseModel, ConfigDict, SecretStr, model_validator
+from pydantic import BaseModel, ConfigDict, SecretStr, model_validator, Field
 
 JINA_API_URL: str = "https://api.jina.ai/v1/embeddings"
 
@@ -43,7 +43,7 @@ class JinaEmbeddings(BaseModel, Embeddings):
     """Jina embedding models."""
 
     session: Any  #: :meta private:
-    model_name: str = "jina-embeddings-v2-base-en"
+    model_name: str = Field(default="jina-embeddings-v2-base-en", alias="model")
     jina_api_key: Optional[SecretStr] = None
 
     model_config = ConfigDict(protected_namespaces=())

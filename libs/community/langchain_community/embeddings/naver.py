@@ -81,6 +81,7 @@ class ClovaXEmbeddings(BaseModel, Embeddings):
     )
     model_name: str = Field(
         default="clir-emb-dolphin",
+        alias="model",
         validation_alias=AliasChoices("model_name", "model"),
         description="NCP ClovaStudio embedding model name",
     )

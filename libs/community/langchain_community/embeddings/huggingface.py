@@ -45,7 +45,7 @@ class HuggingFaceEmbeddings(BaseModel, Embeddings):
     """
 
     client: Any = None  #: :meta private:
-    model_name: str = DEFAULT_MODEL_NAME
+    model_name: str = Field(default=DEFAULT_MODEL_NAME, alias="model")
     """Model name to use."""
     cache_folder: Optional[str] = None
     """Path to store models. 
@@ -152,7 +152,7 @@ class HuggingFaceInstructEmbeddings(BaseModel, Embeddings):
     """
 
     client: Any = None  #: :meta private:
-    model_name: str = DEFAULT_INSTRUCT_MODEL
+    model_name: str = Field(default=DEFAULT_INSTRUCT_MODEL, alias="model")
     """Model name to use."""
     cache_folder: Optional[str] = None
     """Path to store models. 

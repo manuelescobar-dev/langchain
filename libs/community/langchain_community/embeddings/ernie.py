@@ -8,7 +8,7 @@ from langchain_core._api.deprecation import deprecated
 from langchain_core.embeddings import Embeddings
 from langchain_core.runnables.config import run_in_executor
 from langchain_core.utils import get_from_dict_or_env, pre_init
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 
 logger = logging.getLogger(__name__)
 
@@ -27,7 +27,7 @@ class ErnieEmbeddings(BaseModel, Embeddings):
 
     chunk_size: int = 16
 
-    model_name: str = "ErnieBot-Embedding-V1"
+    model_name: str = Field(default="ErnieBot-Embedding-V1", alias = "model")
 
     _lock = threading.Lock()
 

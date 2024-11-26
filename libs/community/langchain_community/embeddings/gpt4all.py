@@ -1,7 +1,7 @@
 from typing import Any, Dict, List, Optional
 
 from langchain_core.embeddings import Embeddings
-from pydantic import BaseModel, ConfigDict, model_validator
+from pydantic import BaseModel, ConfigDict, model_validator, Field
 
 
 class GPT4AllEmbeddings(BaseModel, Embeddings):
@@ -22,7 +22,7 @@ class GPT4AllEmbeddings(BaseModel, Embeddings):
             )
     """
 
-    model_name: Optional[str] = None
+    model_name: Optional[str] = Field(None, alias="model")
     n_threads: Optional[int] = None
     device: Optional[str] = "cpu"
     gpt4all_kwargs: Optional[dict] = {}

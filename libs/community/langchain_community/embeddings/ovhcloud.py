@@ -5,7 +5,7 @@ from typing import Any, List
 
 import requests
 from langchain_core.embeddings import Embeddings
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 
 logger = logging.getLogger(__name__)
 
@@ -19,7 +19,7 @@ class OVHCloudEmbeddings(BaseModel, Embeddings):
     access_token: str = ""
 
     """ OVHcloud AI Endpoints model name for embeddings generation"""
-    model_name: str = ""
+    model_name: str = Field(default="", alias="model")
 
     """ OVHcloud AI Endpoints region"""
     region: str = "kepler"

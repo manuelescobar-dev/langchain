@@ -2,7 +2,7 @@ from enum import Enum
 from typing import Any, Dict, List, Optional, Set, Union
 
 from langchain_core.embeddings import Embeddings
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class TakeoffEmbeddingException(Exception):
@@ -28,7 +28,7 @@ class ReaderConfig(BaseModel):
         protected_namespaces=(),
     )
 
-    model_name: str
+    model_name: str = Field(..., alias="model")
     """The name of the model to use"""
 
     device: Device = Device.cuda

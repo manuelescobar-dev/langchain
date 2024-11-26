@@ -4,6 +4,7 @@ import string
 import threading
 from concurrent.futures import ThreadPoolExecutor, wait
 from typing import Any, Dict, List, Literal, Optional, Tuple
+from pydantic import Field
 
 from langchain_core._api.deprecation import deprecated
 from langchain_core.embeddings import Embeddings
@@ -53,8 +54,7 @@ class VertexAIEmbeddings(_VertexAICommon, Embeddings):  # type: ignore[override]
 
     def __init__(
         self,
-        # the default value would be removed after Feb-01-2024
-        model_name: str = "textembedding-gecko-default",
+        model_name: str = Field(..., alias="model"),
         project: Optional[str] = None,
         location: str = "us-central1",
         request_parallelism: int = 5,
