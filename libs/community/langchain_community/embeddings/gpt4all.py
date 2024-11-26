@@ -22,7 +22,7 @@ class GPT4AllEmbeddings(BaseModel, Embeddings):
             )
     """
 
-    model_name: Optional[str] = Field(None, alias="model")
+    model_name: Optional[str] = None
     n_threads: Optional[int] = None
     device: Optional[str] = "cpu"
     gpt4all_kwargs: Optional[dict] = {}

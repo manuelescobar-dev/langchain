@@ -19,7 +19,7 @@ class OVHCloudEmbeddings(BaseModel, Embeddings):
     access_token: str = ""
 
     """ OVHcloud AI Endpoints model name for embeddings generation"""
-    model_name: str = Field(default="", alias="model")
+    model_name: str = ""
 
     """ OVHcloud AI Endpoints region"""
     region: str = "kepler"
